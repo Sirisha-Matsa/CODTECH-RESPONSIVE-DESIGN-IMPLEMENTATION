@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blinkit - Grocery Delivery</title>
+  <link rel="icon" href="../../assets/images/bli.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    .search-input {
+  flex: 1;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  border-radius: 25px 0 0 25px;
+}
+.search-button {
+  background-color: #4caf50;
+  color: #fff;
+  font-size: 18px;
+  border: none;
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 0 25px 25px 0;
+  transition: background-color 0.3s;
+}
+
+.search-button:hover {
+  background-color: #45a049;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  }
+
+img {
+  max-width: 100%;
+  height: auto;
+    }
+
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: #fff;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .navbar .menu {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar .menu li a {
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+    .hero {
+      background: url('../../assets/images/it4.webp') no-repeat center center/cover;
+      color: #0e0b0b;
+      padding: 50px 20px;
+      height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      color: #4caf50;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: #555;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 5px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-card img {
+      border-radius: 5px;
+    }
+
+    .product-card h3 {
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+
+    .product-card p {
+      color: #555;
+      margin: 5px 0;
+    }
+
+    .product-card .price {
+      font-weight: bold;
+      color: #4caf50;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #4caf50;
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .navbar .menu {
+        display: none;
+        flex-direction: column;
+        background-color: #4caf50;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        width: 150px;
+        border-radius: 5px;
+        padding: 10px;
+      }
+
+      .navbar .menu.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(10, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Blinkit</div>
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+    <center>
+      <div class="search-container">
+          <form action="/search" method="GET">
+              <input type="text" name="q" class="search-input" placeholder="Search for products, categories, or more..." style="border-radius: 50px;width: 300px;height: 30px;">
+                  <button type="submit" class="search-button"></button>
+          </form>
+      </div>
+  </center>
+</section>
+    <ul class="menu" id="menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#categories">Categories</a></li>
+      <li><a href="#offers">Offers</a></li>
+      <li><a href="#cart">Cart</a></li>
+      <li><a href="#profile">Profile</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <h1>Welcome to Blinkit</h1>
+    <p>Get your groceries delivered fast and fresh!</p>
+  </header>
+
+  <main class="product-grid">
+    <div class="product-card">
+      <img src="../../assets/images/f&v.jpg" alt="Product 1">
+      <h3>FURITS & VEGETABLES</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/da.jpg" alt="Product 2">
+      <h3>DAIRY PRODUCTS</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/co.png" alt="Product 3">
+      <h3>COOLDRINK'S</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/pha.jpg" alt="Product 4">
+      <h3>PHARMA & WELLNESS</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/c&m.jpg" alt="Product 5">
+      <h3>CHICKEN, MEAT & FISH</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/s&m.jpg" alt="Product 6">
+      <h3>SNACKS & MUNCHIES</h3>
+      
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/b&i.jpg" alt="Product 7">
+      <h3>BREAKFAST & INSTANTFOOD</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/bs.jpg" alt="Product 8">
+      <h3>BAKERY & BISCUTS</h3>
+      
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/r&d.jpg" alt="Product 9">
+      <h3>RICE , AATA & DAL</h3>
+      
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/m&o.jpg" alt="Product 10">
+      <h3>MASALA , OIL & MORE</h3>
+      
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/s&s.jpg" alt="Product 11">
+      <h3>SAUCES & SPREADS</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/sc.jpeg" alt="Product 12">
+      <h3>SKIN CARE</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/cos.jpg" alt="Product 13">
+      <h3>COSMETICS</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/pet.jpg" alt="Product 14">
+      <h3>PET FOOD</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/house.jpeg" alt="Product 15">
+      <h3>HOME CARE</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/t&c.jpg" alt="Product 16">
+      <h3>TEA & COFFEE</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/BUDS.jpg" alt="Product 17">
+      <h3>ELECTRONICS</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/sw.webp" alt="Product 18">
+      <h3>SWEETS</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/in.jpeg" alt="Product 19">
+      <h3>INDOOR PLANTS</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/see.jpeg" alt="Product 20">
+      <h3>PLANT SEEDS</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/ms.jpeg" alt="Product 21">
+      <h3>MEN'S CARE</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/stat.jpeg" alt="Product 22">
+      <h3>STATIONERY OBJECTS</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/cup.jpeg" alt="Product 23">
+      <h3>MENSTURAL CUP'S</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/PAD.jpeg" alt="Product 24">
+      <h3>MENSTURAL PAD'S</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/baby.jpeg" alt="Product 25">
+      <h3>BABY CARE</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/toys.jpeg" alt="Product 26">
+      <h3>BABY TOY'S</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/pooja.jpeg" alt="Product 27">
+      <h3>POOJA ESSENTIAL'S</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/cho.jpg" alt="Product 28">
+      <h3>CHOCOLATE'S</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/gad.jpeg" alt="Product 29">
+      <h3>GADGET'S</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/giva.jpeg" alt="Product 30">
+      <h3>GIVA JEWELLERY</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/cont.jpeg" alt="Product 31">
+      <h3>KITCHEN CONTAINER'S</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/fro.jpeg" alt="Product 32">
+      <h3>FROZEN PRODUCT'S</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/dry.jpeg" alt="Product 33">
+      <h3>DRY FRUIT'S</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/wellness.jpg" alt="Product 34">
+      <h3>SEXUAL WELLNESS</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/home app.jpeg" alt="Product 35">
+      <h3>HOME APPLIANCE'S</h3>
+    </div>
+    <div class="product-card">
+      <img src="../../assets/images/bath.jpeg" alt="Product 36">
+      <h3>BATH AND BODY</h3>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Blinkit. All rights reserved.</p>
+  </footer>
+
+  <script>
+
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
