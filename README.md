@@ -91,3 +91,8 @@ The objective of the code is to create a responsive, user-friendly grocery deliv
   * Clean and organized layout.
   * Responsive design ensures usability on different devices.
   * Covers a wide range of product categories.
+
+# OUTPUT:
+
+![Screenshot 2025-01-26 184644](https://github.com/user-attachments/assets/d6637497-8721-4eb6-a020-8bc7052cf14a)
+
